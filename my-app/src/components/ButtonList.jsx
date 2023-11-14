@@ -3,7 +3,7 @@ import Button from "./Button";
 
 function ButtonList() {
   return (
-    <div className="">
+    <div className="ml-12">
       <Button name="All"></Button>
       <Button name="Music"></Button>
       <Button name="Sports"></Button>

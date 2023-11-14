@@ -22,7 +22,7 @@ const appRouter = createBrowserRouter([
 ]);
 function App() {
   return (
-    <div className="App">
+    <div className="App scroll-container scroll-smooth">
       <Header></Header>
       <RouterProvider router={appRouter}></RouterProvider>
     </div>

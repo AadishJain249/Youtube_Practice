@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import appSlice from '../store/appSlice'
+import appSlice from './appSlice'
+import messageSlice from './chatSlice'
 const store = configureStore({
     reducer:{
-        app:appSlice
+        app:appSlice,
+        chat:messageSlice
     }
 });
 export default store;

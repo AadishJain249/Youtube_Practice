@@ -1,18 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { showSide } from "../store/appSlice";
+// import { GOOGLE_SEARCH_API } from "../store/constant";
 function Header() {
-  const dispatch=useDispatch()
-  const handleChange=()=>{
-    dispatch(showSide())
-  }
+  const [search, setSearch] = useState();
+  const dispatch = useDispatch();
+  const handleChange = () => {
+    dispatch(showSide());
+  };
+  // useEffect(() => {
+  //   getResult();
+  // }, [search]);
+  // async function getResult() {
+    // const res = await axios.get(
+    //   "https://suggestqueries.google.com/complete/search?output=toolbar&hl=en&gl=in&q="+search  ,{
+    //     method: 'GET', 
+    //     mode: 'no-cors',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //   }
+    // ).then().catch((e)=>console.log(e.message))
+    // console.log(res);
+  // }
   return (
-    <div className="grid grid-flow-col p-2  shadow-lg m-2">
+    <div className="grid grid-flow-col p-2 sticky top-0 shadow-lg m-2 bg-gray-100">
       <div className="flex col-span-1">
         <img
           className="w-10 h-10  cursor-pointer"
           alt=""
-          onClick={()=>handleChange()}
+          onClick={() => handleChange()}
           src="https://static.vecteezy.com/system/resources/previews/021/190/402/original/hamburger-menu-filled-icon-in-transparent-background-basic-app-and-web-ui-bold-line-icon-eps10-free-vector.jpg"
         ></img>
         <img
@@ -24,11 +41,17 @@ function Header() {
 
       <div className=" col-span-10 px-10 flex ml-20">
         <input
-          className=" w-1/2 border  border-gray-400 p-2 rounded-l-full  "
+          className=" w-1/2  border  border-gray-400 p-2 rounded-l-full  "
           type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
-        <button className="border border-gray-400 px-5 py-2  bg-gray-100 rounded-r-full">
-          🔍
+        <button className="border border-gray-400  px-5 py-2  bg-gray-100 rounded-r-full">
+          <img
+            className="w-5 h-5"
+            alt=" "
+            src="https://static-00.iconduck.com/assets.00/search-icon-256x256-n1wf4dtw.png"
+          ></img>
         </button>
       </div>
       <div className="col-span-1 flex">

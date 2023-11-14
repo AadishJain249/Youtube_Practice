@@ -6,10 +6,19 @@ const VideoCard = ({ info }) => {
   }
   const { snippet, statistics } = info;
   const { channelTitle, title, thumbnails } = snippet;
-
+  if(statistics.viewCount<100000)
+  {
+    statistics.viewCount/=1000;
+    statistics.viewCount+="k"
+  }
+  if(statistics.viewCount>=100000)
+  {
+    statistics.viewCount/=100000;
+    statistics.viewCount+='M';
+  }
   return (
     <>
-      <div class="p-2 m-2 w-72 h-90 bg-white border border-gray-200 dark:border-gray-700 shadow-lg">
+      <div className="p-2 m-2 w-72 h-90 bg-white border border-gray-200 shadow-lg">
         <img src={thumbnails.medium.url} alt="" className="rounded-lg  "></img>
         <p className="font-bold   text-gray-700 dark:text-gray-400">{title}</p>
         <p className="font-normal text-gray-700 dark:text-gray-400">
@@ -22,5 +31,12 @@ const VideoCard = ({ info }) => {
     </>
   );
 };
-
+// higher order component
+export const AdVideoCard=({info})=>{
+  return(
+    <div className="">
+      <VideoCard info={info}></VideoCard>
+    </div>
+  )
+}
 export default VideoCard;
